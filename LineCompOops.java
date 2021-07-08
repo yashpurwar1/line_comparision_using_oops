@@ -10,13 +10,22 @@ public class LineCompOops {
 	/*it will check for equality of two lines*/
 	@SuppressWarnings("removal")
 	private static int lengthEquality(double length, double length1) {
-		int flag=0;
+		int flag;
 		Double len = new Double(length);
 		Double len1 = new Double(length1);
-		if (len.equals(len1)) {
-			flag = 1;
-		}
+		flag =  len.compareTo(len1);
 		return flag;
+	}
+	private static void output(int flag) {
+		if (flag == 0 ) {
+			System.out.println("Both the line are equal in size");
+		}
+		else if(flag > 0 ){
+			System.out.println("First line is bigger in size");
+		}
+		else {
+			System.out.println("Second line is bigger in size");
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -34,8 +43,12 @@ public class LineCompOops {
 		double a2 = scanner.nextDouble();
 		double b2 = scanner.nextDouble();
 		double length1 = lengthCalc(a1, b1, a2, b2);
-		//if flag equals 1 then line are equal otherwise not equal
+		/*if flag greater than 0 than length is bigger
+		 * if flag less than 0 than length1 is bigger
+		 * if equals 0 than both are equal
+		 * */
 		int flag = lengthEquality(length, length1);
+		output(flag);
 		scanner.close();
 	}
 
